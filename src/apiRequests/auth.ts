@@ -1,4 +1,3 @@
-import { refreshTokenController } from './../../../server/src/controllers/auth.controller';
 import { LoginBodyType, LoginResType, LogoutBodyType } from "@/schemaValidations/auth.schema";
 import http from "@/lib/http";
 const authApiRequest = {

@@ -10,8 +10,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useLoginMutation } from '@/queries/useAuth'
 
 import { handleErrorApi } from '@/lib/utils'
-import { toast } from '@/components/ui/use-toast'
 import { useRouter } from 'next/navigation'
+import { toast } from '@/hooks/use-toast'
 
 export default function LoginForm() {
   const loginMutation = useLoginMutation()

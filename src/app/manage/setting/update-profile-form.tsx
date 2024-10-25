@@ -12,8 +12,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useAccountMe, useUpdateMeMutation } from '@/queries/useAccount'
 import { useUploadMediaMutation } from '@/queries/useMedia'
-import { toast } from '@/components/ui/use-toast'
 import { handleErrorApi } from '@/lib/utils'
+import { toast } from '@/hooks/use-toast'
 
 export default function UpdateProfileForm() {
   const form = useForm<UpdateMeBodyType>({

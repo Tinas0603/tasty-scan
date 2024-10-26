@@ -21,9 +21,6 @@ const accountApiRequest = {
     // đổi mật khẩu
     changePassword: (body: ChangePasswordBodyType) =>
         http.put<AccountResType>('/accounts/change-password', body),
-    // đổi mật khẩu và cập nhật lại accessToken vì giả sử nhiều người dùng chung 1 tài khoản
-    // nếu 1 tài khoản đổi mật khẩu thì những người dùng khác cũng sẽ bị logout để không thể 
-    // sử dụng token cũ mà tiếp tục sử dụng
     changePasswordV2: (body: ChangePasswordV2BodyType) =>
         http.put<ChangePasswordV2ResType>(
             `/api${prefix}/change-password-v2`,

@@ -14,20 +14,22 @@ export default function LogOutPage() {
     const accessTokenFromUrl = searchParams.get('accessToken')
     useEffect(() => {
         if (
-            ref.current || !refreshTokenFromUrl || !accessTokenFromUrl ||
-            (refreshTokenFromUrl &&
-                refreshTokenFromUrl !== getRefreshTokenFromLocalStorage()) ||
-            (accessTokenFromUrl &&
-                accessTokenFromUrl !== getAccessTokenFromLocalStorage())
-        ) {
-            return
-        }
-        // if (
-        //     ref.current || refreshTokenFromUrl != getRefreshTokenFromLocalStorage()
-        // ) {
-        //     return
-        // }
-        ref.current = mutateAsync
+            !ref.current &&
+            ((refreshTokenFromUrl &&
+                refreshTokenFromUrl === getRefreshTokenFromLocalStorage()) ||
+                (accessTokenFromUrl &&
+                    accessTokenFromUrl === getAccessTokenFromLocalStorage()))
+        )
+            // if (
+            //     ref.current || !refreshTokenFromUrl || !accessTokenFromUrl ||
+            //     (refreshTokenFromUrl &&
+            //         refreshTokenFromUrl !== getRefreshTokenFromLocalStorage()) ||
+            //     (accessTokenFromUrl &&
+            //         accessTokenFromUrl !== getAccessTokenFromLocalStorage())
+            // ) {
+            //     return
+            // }
+            ref.current = mutateAsync
         mutateAsync().then((res) => {
             setTimeout(() => {
                 ref.current = null

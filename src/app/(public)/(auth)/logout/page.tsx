@@ -22,6 +22,11 @@ export default function LogOutPage() {
         ) {
             return
         }
+        // if (
+        //     ref.current || refreshTokenFromUrl != getRefreshTokenFromLocalStorage()
+        // ) {
+        //     return
+        // }
         ref.current = mutateAsync
         mutateAsync().then((res) => {
             setTimeout(() => {

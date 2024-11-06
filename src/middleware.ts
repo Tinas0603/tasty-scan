@@ -26,7 +26,7 @@ export function middleware(request: NextRequest) {
         refreshToken
     ) {
         const url = new URL('/logout', request.url)
-        url.searchParams.set('refreshToken', refreshToken ?? '')
+        url.searchParams.set('refreshToken', refreshToken)
         return NextResponse.redirect(url)
     }
     // 2.3 Các trường hợp còn lại thì diễn ra bình thường

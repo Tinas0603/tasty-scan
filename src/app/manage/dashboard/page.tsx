@@ -9,7 +9,7 @@ export default async function Dashboard() {
         const result = await accountApiRequest.sMe(accessToken)
         name = result.payload.data.name
     } catch (error: any) {
-        if (error.digest.includes('NEXT_REDIRECT')) {
+        if (error.digest?.includes('NEXT_REDIRECT')) {
             throw error
         }
     }

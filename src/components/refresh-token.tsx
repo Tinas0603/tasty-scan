@@ -1,5 +1,5 @@
 import { checkAndRefreshToken, getAccessTokenFromLocalStorage, getRefreshTokenFromLocalStorage, setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from "@/lib/utils";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import jwt from 'jsonwebtoken'
 import authApiRequest from "@/apiRequests/auth";
@@ -8,6 +8,7 @@ import authApiRequest from "@/apiRequests/auth";
 const UNAUTHENTICATED_PATH = ['/login', '/logout', '/refresh-token']
 export default function RefreshToken() {
     const pathname = usePathname()
+    const router = useRouter()
     useEffect(() => {
         if (UNAUTHENTICATED_PATH.includes(pathname)) return
         let interval: any = null
@@ -15,16 +16,22 @@ export default function RefreshToken() {
         checkAndRefreshToken({
             onError: () => {
                 clearInterval(interval)
+                router.push('/login')
             }
         })
         // Timeout interval phải bé hơn thời gian hết hạn của access token
-        // Ví dụ thời gian hết hạn access token là 10s thì 1s sẽ cho check 1 lần 
-        const TIMEOUT = 1000
-        interval = setInterval(checkAndRefreshToken, TIMEOUT)
+        // Ví dụ thời gian hết hạn access token là 1h thì 6p sẽ cho check 1 lần 
+        const TIMEOUT = 360000
+        interval = setInterval(() => checkAndRefreshToken({
+            onError: () => {
+                clearInterval(interval)
+                router.push('/login')
+            }
+        }), TIMEOUT)
         return () => {
             clearInterval(interval)
         }
-    }, [pathname])
+    }, [pathname, router])
     return null
 }
 

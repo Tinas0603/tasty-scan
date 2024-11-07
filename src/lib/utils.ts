@@ -78,9 +78,10 @@ export const checkAndRefreshToken = async (param?: {
   }
   // Thời điểm hết hạn của token là tính theo epoch time(s)
   // Còn khi dùng cú pháp new Date().getTime() thì nó sẽ trả về epoch time(ms)
-  const now = Math.round(new Date().getTime() / 1000)
+  const now = (new Date().getTime() / 1000) - 1
   // Trường hợp refresh token hết hạn thì không xử lý nữa
   if (decodedRefreshToken.exp <= now) {
+    console.log('Refresh token hết hạn rồi bạn ơi')
     removeTokensFromLocalStorage()
     return param?.onError && param.onError()
 

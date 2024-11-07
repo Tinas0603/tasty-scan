@@ -1,8 +1,6 @@
 import { checkAndRefreshToken, getAccessTokenFromLocalStorage, getRefreshTokenFromLocalStorage, setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import jwt from 'jsonwebtoken'
-import authApiRequest from "@/apiRequests/auth";
 
 // Những page sau sẽ không check refresh token
 const UNAUTHENTICATED_PATH = ['/login', '/logout', '/refresh-token']

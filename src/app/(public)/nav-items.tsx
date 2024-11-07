@@ -1,8 +1,7 @@
 'use client'
 
-import { getAccessTokenFromLocalStorage } from '@/lib/utils'
+import { useAppContext } from '@/components/app-provider'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
 const menuItems = [
   {
@@ -29,11 +28,7 @@ const menuItems = [
 //Client: Đầu tiên hiển thị món ăn và đăng nhập. Nhưng ngay sau đó client render ra là Món ăn, đơn hàng
 // quản lý do đã set được trạng thái đăng nhập
 export default function NavItems({ className }: { className?: string }) {
-  const [isAuth, setIsAuth] = useState(false)
-  useEffect(() => {
-    setIsAuth(Boolean(getAccessTokenFromLocalStorage()))
-  }, [])
-
+  const { isAuth } = useAppContext()
   return menuItems.map((item) => {
     if (item.authRequired === false && isAuth ||
       item.authRequired === true && !isAuth

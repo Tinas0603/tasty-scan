@@ -324,7 +324,7 @@ export default function DishTable() {
                     colSpan={columns.length}
                     className='h-24 text-center'
                   >
-                    No results.
+                    Không có kết quả...
                   </TableCell>
                 </TableRow>
               )}

@@ -34,7 +34,7 @@ export default function AppProvider({
         if (accessToken) {
             setIsAuthState(true)
         }
-    })
+    }, [])
     const setIsAuth = useCallback((isAuth: boolean) => {
         if (isAuth) {
             setIsAuthState(true)

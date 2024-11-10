@@ -39,7 +39,9 @@ const guestApiRequest = {
                 }
             }
         ),
-    logout: () => http.post('/api/guest/auth/logout', null, { baseUrl: '' }), // client gọi đến route handler, không cần truyền AT và RT vào body vì AT và RT tự  động gửi thông qua cookie rồi
+    // client gọi đến route handler, không cần truyền AT và RT 
+    //vào body vì AT và RT tự  động gửi thông qua cookie rồi
+    logout: () => http.post('/api/guest/auth/logout', null, { baseUrl: '' }),
     sRefreshToken: (body: RefreshTokenBodyType) =>
         http.post<RefreshTokenResType>('/guest/auth/refresh-token', body),
     async refreshToken() {

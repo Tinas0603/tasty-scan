@@ -20,13 +20,13 @@ export default function DropdownAvatar() {
   const { data } = useAccountMe()
   const account = data?.payload.data
   const logoutMutation = useLogoutMutation()
-  const { setIsAuth } = useAppContext()
+  const { setRole } = useAppContext()
   const router = useRouter()
   const logout = async () => {
     if (logoutMutation.isPending) return
     try {
       await logoutMutation.mutateAsync()
-      setIsAuth(false)
+      setRole()
       router.push('/')
     } catch (error: any) {
       handleErrorApi({

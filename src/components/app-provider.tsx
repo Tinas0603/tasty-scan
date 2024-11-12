@@ -8,7 +8,9 @@ import RefreshToken from './refresh-token'
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { decodeToken, getAccessTokenFromLocalStorage, removeTokensFromLocalStorage } from '@/lib/utils'
 import { RoleType } from '@/types/jwt.types'
-
+// Default
+// staleTime: 0
+// gc: 5 phút (5 * 1000* 60)
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {

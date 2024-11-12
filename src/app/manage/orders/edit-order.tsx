@@ -15,7 +15,6 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useEffect, useState } from 'react'
 import { DishListResType } from '@/schemaValidations/dish.schema'
 import { useGetOrderDetailQuery, useUpdateOrderMutation } from '@/queries/useOrder'
-import { boolean } from 'zod'
 import { toast } from '@/hooks/use-toast'
 
 

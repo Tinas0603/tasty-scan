@@ -5,14 +5,15 @@ import { cn } from '@/lib/utils'
 import { Toaster } from '@/components/ui/toaster'
 import { ThemeProvider } from '@/components/theme-provider'
 import AppProvider from '@/components/app-provider'
+import Footer from '@/components/footer'
 
 const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans'
 })
 export const metadata: Metadata = {
-  title: 'TastyScan Restaurant',
-  description: 'The best restaurant in the world'
+  title: 'Bếp ẩm thực TastyScan',
+  description: 'Sự tiện lợi trong mỗi lần quét, hương vị trong mỗi món ăn'
 }
 
 export default function RootLayout({
@@ -27,6 +28,7 @@ export default function RootLayout({
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
             {children}
             <Toaster />
+            <Footer />
           </ThemeProvider>
         </AppProvider>
       </body>

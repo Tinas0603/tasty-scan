@@ -1,5 +1,6 @@
 'use client'
 
+import { useAppContext } from '@/components/app-provider'
 import { Badge } from '@/components/ui/badge'
 import { OrderStatus } from '@/constants/type'
 import { toast } from '@/hooks/use-toast'
@@ -16,6 +17,7 @@ import { useEffect, useMemo } from 'react'
 export default function OrdersCart() {
     const { data, refetch } = useGuestGetOrderListQuery()
     const orders = useMemo(() => data?.payload.data ?? [], [data])
+    const { socket } = useAppContext()
     const { waitingForPaying, paid } = useMemo(() => {
         return orders.reduce(
             (result, order) => {
@@ -104,7 +106,7 @@ export default function OrdersCart() {
             socket?.off('update-order', onUpdateOrder)
             socket?.off('payment', onPayment)
         }
-    }, [refetch])
+    }, [refetch, socket])
     return (
         <>
             {orders.map((order, index) => (

@@ -9,7 +9,7 @@ import { LoginBody, LoginBodyType } from '@/schemaValidations/auth.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useLoginMutation } from '@/queries/useAuth'
 
-import { handleErrorApi } from '@/lib/utils'
+import { generateSocketInstance, handleErrorApi } from '@/lib/utils'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { toast } from '@/hooks/use-toast'
 import { useEffect } from 'react'
@@ -19,7 +19,7 @@ export default function LoginForm() {
   const loginMutation = useLoginMutation()
   const searchParams = useSearchParams()
   const clearTokens = searchParams.get('clearTokens')
-  const { setRole } = useAppContext()
+  const { setRole, setSocket } = useAppContext()
   const form = useForm<LoginBodyType>({
     resolver: zodResolver(LoginBody),
     defaultValues: {
@@ -42,6 +42,7 @@ export default function LoginForm() {
       })
       setRole(result.payload.data.account.role)
       router.push('/manage/dashboard')
+      setSocket(generateSocketInstance(result.payload.data.accessToken))
     } catch (error: any) {
       handleErrorApi({
         error,
@@ -71,7 +72,12 @@ export default function LoginForm() {
                   <FormItem>
                     <div className='grid gap-2'>
                       <Label htmlFor='email'>Email</Label>
-                      <Input id='email' type='email' required {...field} />
+                      <Input
+                        id='email'
+                        type='email'
+                        placeholder='m@example.com'
+                        required {...field}
+                      />
                       <FormMessage />
                     </div>
                   </FormItem>
@@ -86,7 +92,11 @@ export default function LoginForm() {
                       <div className='flex items-center'>
                         <Label htmlFor='password'>Password</Label>
                       </div>
-                      <Input id='password' type='password' required {...field} />
+                      <Input
+                        id='password'
+                        type='password'
+                        required {...field}
+                      />
                       <FormMessage />
                     </div>
                   </FormItem>

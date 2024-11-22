@@ -44,7 +44,7 @@ const menuItems: {
 //Client: Đầu tiên hiển thị món ăn và đăng nhập. Nhưng ngay sau đó client render ra là Món ăn, đơn hàng
 // quản lý do đã set được trạng thái đăng nhập
 export default function NavItems({ className }: { className?: string }) {
-  const { role, setRole } = useAppContext()
+  const { role, setRole, socket, disconnectSocket } = useAppContext()
   const logoutMutation = useLogoutMutation()
   const router = useRouter()
   const logout = async () => {
@@ -52,6 +52,7 @@ export default function NavItems({ className }: { className?: string }) {
     try {
       await logoutMutation.mutateAsync()
       setRole()
+      disconnectSocket()
       router.push('/')
     } catch (error: any) {
       handleErrorApi({

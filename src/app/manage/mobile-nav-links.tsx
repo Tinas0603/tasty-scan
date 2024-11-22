@@ -1,14 +1,16 @@
 'use client'
 import menuItems from '@/app/manage/menuItems'
+import { useAppContext } from '@/components/app-provider'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { cn } from '@/lib/utils'
+import { cn, decodeToken, getAccessTokenFromLocalStorage } from '@/lib/utils'
 import { Package2, PanelLeft } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 export default function MobileNavLinks() {
   const pathname = usePathname()
+  const { role } = useAppContext()
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -29,14 +31,17 @@ export default function MobileNavLinks() {
             </Link>
             {menuItems.map((Item, index) => {
               const isActive = pathname === Item.href
+              if (Item.roles && !Item.roles.includes(role as any)) return null
               return (
                 <Link
                   key={index}
                   href={Item.href}
-                  className={cn('flex items-center gap-4 px-2.5  hover:text-foreground', {
-                    'text-foreground': isActive,
-                    'text-muted-foreground': !isActive
-                  })}
+                  className={cn('flex items-center gap-4 px-2.5  hover:text-foreground',
+                    {
+                      'text-foreground': isActive,
+                      'text-muted-foreground': !isActive
+                    }
+                  )}
                 >
                   <Item.Icon className='h-5 w-5' />
                   {Item.title}

@@ -1,4 +1,3 @@
-import socket from "@/lib/socket";
 import { checkAndRefreshToken } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";

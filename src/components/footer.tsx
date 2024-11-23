@@ -2,7 +2,7 @@ import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa'
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-100 dark:bg-gray-900 py-10 px-4 md:px-20 lg:px-40 text-gray-700 dark:text-gray-300">
+        <footer className="bg-gray-100 dark:bg-zinc-950 py-10 px-4 md:px-20 lg:px-40 text-gray-700 dark:text-gray-300">
             <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
                 <div className="mb-6 md:mb-0 text-center md:text-left">
                     <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Bếp ẩm thực TastyScan</h2>
@@ -12,11 +12,22 @@ export default function Footer() {
                 </div>
 
                 <div className="mb-6 md:mb-0">
-                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white">Liên hệ với chúng tôi</h3>
                     <ul className="mt-4 space-y-2">
-                        <li>Email: hutech21DTHD6@gmail.com</li>
-                        <li>SĐT: +84 338 323 677</li>
-                        <li>Địa chỉ: Khu Công nghệ cao XL Hà Nội, Hiệp Phú, Quận 9, Hồ Chí Minh, Việt Nam</li>
+                        <li>
+                            <a href="/terms-of-service" className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+                                Điều khoản dịch vụ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/privacy-policy" className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+                                Chính sách bảo mật
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/about-us" className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+                                Về chúng tôi
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -32,7 +43,6 @@ export default function Footer() {
                     </a>
                 </div>
             </div>
-
             <div className="border-t border-gray-300 dark:border-gray-700 mt-10 pt-6 text-center text-sm">
                 &copy; 2024 Bếp ẩm thực TastyScan. Tất cả các quyền đã được bảo lưu.
             </div>

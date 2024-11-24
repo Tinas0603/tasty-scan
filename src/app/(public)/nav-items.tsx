@@ -1,6 +1,6 @@
 'use client'
 
-import { useAppContext } from '@/components/app-provider'
+import { useAppStore } from '@/components/app-provider'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog'
 import { Role } from '@/constants/type'
 import { cn, handleErrorApi } from '@/lib/utils'
@@ -44,7 +44,9 @@ const menuItems: {
 //Client: Đầu tiên hiển thị món ăn và đăng nhập. Nhưng ngay sau đó client render ra là Món ăn, đơn hàng
 // quản lý do đã set được trạng thái đăng nhập
 export default function NavItems({ className }: { className?: string }) {
-  const { role, setRole, socket, disconnectSocket } = useAppContext()
+  const role = useAppStore((state) => state.role)
+  const setRole = useAppStore((state) => state.setRole)
+  const disconnectSocket = useAppStore((state) => state.disconnectSocket)
   const logoutMutation = useLogoutMutation()
   const router = useRouter()
   const logout = async () => {

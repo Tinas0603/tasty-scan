@@ -76,7 +76,7 @@ export default function NavItems({ className }: { className?: string }) {
         }
         return null
       })}
-      {role && (
+      {role === Role.Guest && (
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <div className={cn(className, 'cursor-pointer')}>Đăng xuất</div>

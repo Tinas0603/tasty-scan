@@ -84,7 +84,7 @@ export default function MenuOrder() {
                             <h3 className='text-sm'>{dish.name}</h3>
                             <p
                                 className={cn('text-xs', {
-                                    'line-clamp-3': isDescriptionOpen !== dish.id, // Only apply line-clamp when description is collapsed for this dish
+                                    'line-clamp-3': isDescriptionOpen !== dish.id,
                                 })}
                             >
                                 {dish.description}
@@ -99,14 +99,14 @@ export default function MenuOrder() {
                             )}
                             {isDescriptionOpen === dish.id && (
                                 <button
-                                    onClick={() => handleDescriptionClick(dish.id)} // Close the description
+                                    onClick={() => handleDescriptionClick(dish.id)}
                                     className="text-xs text-blue-500"
                                 >
                                     Thu gọn
                                 </button>
                             )}
                         </div>
-                        {/* Use flex-col to stack price and quantity vertically */}
+
                         <div className="ml-auto flex flex-col items-center ">
                             <p className='text-xs font-semibold'>
                                 Giá: {formatCurrency(dish.price)}

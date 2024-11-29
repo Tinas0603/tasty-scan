@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { ThemeProvider } from '@/components/theme-provider'
 import AppProvider from '@/components/app-provider'
 import Footer from '@/components/footer'
-
+import NextTopLoader from 'nextjs-toploader';
 const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans'
@@ -24,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
+        <NextTopLoader showSpinner={false} color='hsl(var(--foreground))' />
         <AppProvider>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
             {children}

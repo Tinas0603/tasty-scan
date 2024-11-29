@@ -8,7 +8,6 @@ import { Form, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { LoginBody, LoginBodyType } from '@/schemaValidations/auth.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useLoginMutation } from '@/queries/useAuth'
-
 import { generateSocketInstance, handleErrorApi } from '@/lib/utils'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { toast } from '@/hooks/use-toast'
@@ -16,6 +15,8 @@ import { useEffect } from 'react'
 import { useAppStore } from '@/components/app-provider'
 import envConfig from '@/config'
 import Link from 'next/link'
+import { LoaderCircle } from 'lucide-react'
+import { FaGoogle } from 'react-icons/fa'; // Import Google icon
 
 const getOauthGoogleUrl = () => {
   const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth'
@@ -124,11 +125,11 @@ export default function LoginForm() {
                 )}
               />
               <Button type='submit' className='w-full'>
-                Đăng nhập
+                {loginMutation.isPending && <LoaderCircle className='w-5 h-5 animate-spin' />} Đăng nhập
               </Button>
               <Link href={googleOauthUrl}>
-                <Button variant='outline' className='w-full' type='button'>
-                  Đăng nhập bằng Google
+                <Button variant='outline' className='w-full flex items-center justify-center' type='button'>
+                  <FaGoogle className='mr-2' /> Đăng nhập bằng Google
                 </Button>
               </Link>
             </div>

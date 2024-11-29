@@ -4,9 +4,9 @@ import { useAppStore } from "@/components/app-provider"
 import { getAccessTokenFromLocalStorage, getRefreshTokenFromLocalStorage } from "@/lib/utils"
 import { useLogoutMutation } from "@/queries/useAuth"
 import { useRouter, useSearchParams } from "next/navigation"
-import { Suspense, useEffect, useRef } from "react"
+import { memo, Suspense, useEffect, useRef } from "react"
 
-function Logout() {
+function LogoutComponent() {
     const { mutateAsync } = useLogoutMutation()
     const router = useRouter()
     const disconnectSocket = useAppStore((state) => state.disconnectSocket)
@@ -30,23 +30,18 @@ function Logout() {
                 }, 1000)
                 setRole()
                 disconnectSocket()
-                router.push('/login')
             })
-        } else {
-            router.push('/')
         }
     }, [mutateAsync, router, refreshTokenFromUrl, accessTokenFromUrl, setRole, disconnectSocket])
-    return (
-        <div>
-            Logout...
-        </div>
-    )
+    return null
 }
 
-export default function LogOutPage() {
+const Logout = memo(function LogoutInner() {
     return (
         <Suspense>
-            <Logout />
+            <LogoutComponent />
         </Suspense>
     )
-}
+})
+
+export default Logout

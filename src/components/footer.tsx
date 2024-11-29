@@ -14,7 +14,7 @@ export default function Footer() {
                 <div className="mb-6 md:mb-0">
                     <ul className="mt-4 space-y-2">
                         <li>
-                            <a href="/terms-of-service" className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+                            <a href="/term-of-service" className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
                                 Điều khoản dịch vụ
                             </a>
                         </li>
@@ -24,7 +24,7 @@ export default function Footer() {
                             </a>
                         </li>
                         <li>
-                            <a href="/about-us" className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+                            <a href="/about" className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
                                 Về chúng tôi
                             </a>
                         </li>

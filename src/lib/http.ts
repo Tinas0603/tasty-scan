@@ -124,7 +124,7 @@ const request = async <Response>(
         //Đây là trường hợp khi mà chúng ta vẫn còn access token (còn hạn)
         //Và chúng ta gọi API ở Next.js Server (Route Handler, Server Component) đến Server Backend
         const accessToken = (options?.headers as any)?.Authorization.split('Bearer ')[1]
-        redirect(`/logout?accessToken=${accessToken}`)
+        redirect(`/login?accessToken=${accessToken}`)
       }
     } else {
       throw new HttpError(data)

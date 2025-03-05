@@ -84,7 +84,7 @@ export default function MenuOrder() {
                             <h3 className='text-sm'>{dish.name}</h3>
                             <p
                                 className={cn('text-xs', {
-                                    'line-clamp-3': isDescriptionOpen !== dish.id,
+                                    'line-clamp-2': isDescriptionOpen !== dish.id,
                                 })}
                             >
                                 {dish.description}

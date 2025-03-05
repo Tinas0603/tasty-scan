@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
         <NextTopLoader showSpinner={false} color='hsl(var(--foreground))' />
         <AppProvider>
-          <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
+          <ThemeProvider attribute='class' defaultTheme='light' enableSystem disableTransitionOnChange>
             {children}
             <Toaster />
             <Footer />

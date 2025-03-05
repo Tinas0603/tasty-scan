@@ -51,7 +51,7 @@ export default function DropdownAvatar() {
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link href={'/manage/setting'} className='cursor-pointer'>
-            Cài đặt
+            Tài khoản
           </Link>
         </DropdownMenuItem>
         {/* <DropdownMenuItem>Hỗ trợ</DropdownMenuItem> */}

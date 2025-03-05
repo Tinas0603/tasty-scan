@@ -68,11 +68,11 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors duration-200;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans leading-relaxed;
   }
 }
 
@@ -91,5 +91,48 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+  }
+}
+
+.card {
+  @apply bg-card text-card-foreground rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.banner-title {
+  @apply text-center font-extrabold tracking-tight drop-shadow-lg;
+}
+
+.section-title {
+  @apply text-center font-semibold text-xl sm:text-2xl md:text-3xl text-primary mb-8;
+}
+/* Hiệu ứng Gradient Rainbow Chuyển Động Mượt */
+.rainbow-text {
+  background: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet,
+    red
+  );
+  background-size: 200%; /* Gradient kéo dài để không bị lặp gấp */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow-animation 10s linear infinite;
+}
+
+@keyframes rainbow-animation {
+  0% {
+    background-position: 0% 50%; /* Gradient bắt đầu từ bên trái */
+  }
+  100% {
+    background-position: 200% 50%; /* Di chuyển hết chiều rộng gradient */
   }
 }
